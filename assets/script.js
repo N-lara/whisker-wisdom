@@ -10,9 +10,9 @@ fetch(url)
           alert('Error: ' + response.statusText);
         }
       })
-      .catch(function (error) {
-        alert('Unable to connect to GitHub');
-      });
+      // .catch(function (error) {
+      //   alert('Unable to connect to GitHub');
+      // });
 
 
       $(document).ready(function () {
