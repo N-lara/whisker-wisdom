@@ -15,6 +15,7 @@ fetch(url)
       });
 
 
+
       $(document).ready(function () {
         //dummy variables would need the right id for container
         var catFacts = $("#random-fact");
@@ -43,3 +44,4 @@ fetch(url)
             });
         }
     });
+
