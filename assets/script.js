@@ -14,31 +14,34 @@ fetch(url)
         alert('Unable to connect to GitHub');
       });
 
-    //   $(document).ready(function () {
-    //     //dummy variables would need the right id for container
-    //     var catFacts = $("#catF");
-    // //-------------------------------------
-    //     var requestUrl = "https://meowfacts.herokuapp.com/";
-    //     //Needs ID for button below
-    //     $("#buttonVal").on("click", function () {
-    // //-------------------------------------------------------
-    //         retrieveCatFacts();
-    //     });
-    
-    //     function retrieveCatFacts() {
-    //         fetch(requestUrl, {
-    //             method: "GET",
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             credentials: "same-origin",
-    //             redirect: "follow"
-    //         }).then(function (response) {
-    //             return response.json();
-    //         }).then(function (data) {
-    //             console.log(data);
-    //             var catFactListed = data.data[0];
-    //             catFacts.text(catFactListed);
-    //         });
-    //     }
-    // });
+
+
+      $(document).ready(function () {
+        //dummy variables would need the right id for container
+        var catFacts = $("#random-fact");
+    //-------------------------------------
+        var requestUrl = "https://meowfacts.herokuapp.com/";
+        //Needs ID for button below
+        $("#next").on("click", function () {
+    //-------------------------------------------------------
+            retrieveCatFacts();
+        });
+
+        function retrieveCatFacts() {
+            fetch(requestUrl, {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: "same-origin",
+                redirect: "follow"
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data);
+                var catFactListed = data.data[0];
+                catFacts.text(catFactListed);
+            });
+        }
+    });
+
