@@ -61,4 +61,3 @@ $("favorites-btn").on("click", function () {
   //favorites.push("Array being pushed");
   localStorage.setItem("favorites", JSON.stringify(favorites));
 });
-
