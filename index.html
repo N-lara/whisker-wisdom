@@ -11,19 +11,20 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <header class="container has-background-dark has-text-centered py-3">
+    <header class="container has-background-pink has-text-centered py-3 box container-fluid">
         <h1 class="title has-text-centered">Whisker Wisdom</h1>
-        <button id="favorites-btn" class="button is-success">View Favorites</button>
+        <button class="button is-success">View Favorites</button>
     </header>
-    <main class="columns">
-        <div class="column is-one-third buttons has-text-centered is-flex is-align-items-center">
-            <button class="button is-success">prev</button>
+    
+    <main class="columns is-centered is-vcentered">
+        <div class="column is-one-third has-text-centered">
+            <button class="button is-success">Prev</button>
         </div>
-        <div class="column" id="content-container">
+        <div class="column is-one-third has-text-centered" id="content-container">
             <img id="random-img" src="https://placehold.co/600x400" alt="">
-            <p id="random-fact" class="content">Random fact goes here Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem saepe praesentium iste non animi aut, natus reiciendis at earum sequi, repellat possimus eos maiores ipsam doloribus deserunt minima, commodi officiis!</p>
+            <p id="random-fact" class="content"></p>
         </div>
-        <div class="column is-one-third buttons has-text-centered is-flex is-align-items-center">
+        <div class="column is-one-third has-text-centered">
             <button id="next" class="button is-success">Next</button>
         </div>
     </main>
