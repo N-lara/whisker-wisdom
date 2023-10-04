@@ -1,19 +1,20 @@
-var url='https://cdn2.thecatapi.com/images/FCNqMC83P.jpg'
-
-fetch(url)
-    .then(function (response) {
-        if (response.ok) {
-          response.json().then(function (data) {
-            console.log(data);
-          });
-        } else {
-          alert('Error: ' + response.statusText);
+var catPhotos = []
+var randomNum = Math.floor(Math.random()*100);
+fetch('https://api.thecatapi.com/v1/images/search?limit=10')//50&api_key=live_4MxtfIDUxCcvH5y3DoACnMZw1ijvUw7eiz48xvUqelwA97DSk7Cpv1JkE4H64q84')
+.then(function (response) {
+    if (response.ok) {
+        response.json().then(function (data){
+        console.log('Photos:');
+        console.log(data);
+        for(var i = 0; i < data.length; i++){
+        console.log(i)
+        console.log(data[i].url);
+        catPhotos.unshift(data[i].url);
+        console.log(catPhotos);
         }
       })
-      // .catch(function (error) {
-      //   alert('Unable to connect to GitHub');
-      // });
-
+    }
+})
 
 
       $(document).ready(function () {
@@ -44,4 +45,3 @@ fetch(url)
             });
         }
     });
-
