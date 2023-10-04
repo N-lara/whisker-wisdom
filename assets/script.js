@@ -11,15 +11,9 @@ fetch('https://api.thecatapi.com/v1/images/search?limit=10')//50&api_key=live_4M
         catPhotos.unshift(data[i].url);
         console.log(catPhotos);
         }
-  });
-    } else {
-        console.log('Error: ' + response.statusText);
+      })
     }
 })
-.catch(function (error) {
-console.log('Unable to connect to thecatapi');
-});
-
 
 
       $(document).ready(function () {
