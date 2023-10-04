@@ -49,7 +49,7 @@ fetch('https://api.thecatapi.com/v1/images/search?limit=10')//50&api_key=live_4M
 //---------------------------------------------------
 // <button id="favorites-btn">View Favorites</button>
 //This favorite button 
-$("favorites-btn").on("click", function () {
+$("#favorites-btn").on("click", function () {
   var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   //favorites.push("Array being pushed");
   localStorage.clear();//prevents duplication
