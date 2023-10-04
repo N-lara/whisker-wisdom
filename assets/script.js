@@ -7,7 +7,6 @@ fetch('https://api.thecatapi.com/v1/images/search?limit=10')//50&api_key=live_4M
         console.log('Photos:');
         console.log(data);
         for(var i = 0; i < data.length; i++){
-        console.log(i)
         console.log(data[i].url);
         catPhotos.unshift(data[i].url);
         console.log(catPhotos);
