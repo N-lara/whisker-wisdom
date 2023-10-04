@@ -55,8 +55,10 @@ console.log('Unable to connect to thecatapi');
 /*Adding button favorite*/
 //---------------------------------------------------
 // <button id="favorites-btn">View Favorites</button>
-
-$("favorites-btn").on("click", function {
-  
+//This favorite button 
+$("favorites-btn").on("click", function () {
+  var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  //favorites.push("Array being pushed");
+  localStorage.setItem("favorites", JSON.stringify(favorites));
 });
 
