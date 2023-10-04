@@ -10,22 +10,20 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <header class="container">
-        <h1 class="title">Whisker Wisdom</h1>
-        <button id="favorites-btn">View Favorites</button>
+    <header class="container has-background-dark has-text-centered py-3">
+        <h1 class="title has-text-centered">Whisker Wisdom</h1>
+        <button id="favorites-btn" class="button is-success">View Favorites</button>
     </header>
-    <main class="">
-        <div class= "column" id ="content-container">
-            <img id="random-img" src = "https://placehold.co/600x400 "alt="">
-            <p id = "random fact">Random fact goes here Lorem ipsum dolor sit, 
-                amet consectetur adipisicing elit. Autem saepe praesentium iste non animi aut, natus reiciendis at earum sequi, 
-                repellat possimus eos maiores ipsam doloribus deserunt minima, commodi officiis! </p>
-
+    <main class="columns">
+        <div class="column is-one-third buttons has-text-centered is-flex is-align-items-center">
+            <button class="button is-success">prev</button>
         </div>
-        <div class= "columns" id="buttons">
-            <button class= "column" id="prev">prev</button>
-            <button class = "column" id="next">next </button>
-
+        <div class="column" id="content-container">
+            <img id="random-img" src="https://placehold.co/600x400" alt="">
+            <p id="random-fact" class="content">Random fact goes here Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem saepe praesentium iste non animi aut, natus reiciendis at earum sequi, repellat possimus eos maiores ipsam doloribus deserunt minima, commodi officiis!</p>
+        </div>
+        <div class="column is-one-third buttons has-text-centered is-flex is-align-items-center">
+            <button id="next" class="button is-success">Next</button>
         </div>
     </main>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
