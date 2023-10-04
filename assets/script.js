@@ -45,3 +45,11 @@ fetch(url)
         }
     });
 
+/*Adding button favorite*/
+//---------------------------------------------------
+// <button id="favorites-btn">View Favorites</button>
+
+$("favorites-btn").on("click", function {
+  
+});
+
