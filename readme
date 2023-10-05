@@ -1,65 +1,38 @@
-# <Your-Project-Title>
+# Whisker-Wisdom
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
-
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
+Team No Ragrets came together to create this project to spread the joy of viewing cat photos and the knowlidge of random facts with the general public. we combined the power of https://thecatapi.com/ and https://github.com/wh-iterabb-it/meowfacts together to give people a premium location for all people to get their cat fix throught the day at the low cost of free. This project was also great in solidifying team No Ragrets teamwork and collaboration skills and also helped improved our knowlidge of using APIs and local storage. 
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+N/A
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Usage for this web application is very simple. you can browse random cat facts and photos withe the slideshow. If you like a photo/fact you may favorite it by clicking the favorite button. The favorites are saved to local storage so if you exit the page and come back your favorites will be saved. If you wish to change from looking at the random pictures to looking at your favorited photos you may click the view favorites button this will switch the slideshow from the random pictures and facts to a slideshow of your favorited pictures and facts. once you are done viewing your favorites then you can click the view random button to switch the slideshow from your favorites back to the random feed. That just about covers the complete functionality of this program have a great time, and happy scrolling!
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-
-![alt text](assets/images/screenshot.png)
+![alt text](./assets/screenshot.png)
 
 ## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
-
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
+Created by:
+Arthur Bridges (https://github.com/Arthur-Bridges),   
+Tatum Sterling (https://github.com/TatumSterling),  
+and Noah Lara(https://github.com/N-lara)   
+also we used theese apis in our work https://thecatapi.com/ , https://github.com/wh-iterabb-it/meowfacts
 
 ## License
 
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
-
----
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
+N/A
 
 ## Badges
 
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-
-Badges aren't necessary, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
-## Features
-
-If your project has a lot of features, list them here.
-
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-## Tests
-
-Go the extra mile and write tests for your app
+![badge](https://img.shields.io/badge/Team-No%20Ragrets-FF2400)
+![badge](https://img.shields.io/badge/Noahs%20badge-8A2BE2)
+![badge](https://img.shields.io/badge/Tatums%20badge-8E82FE)
+![badge](https://img.shields.io/badge/Arthurs%20badge-2EB107)
+![badge](https://img.shields.io/badge/1%-HTML-FF704D)
+![badge](https://img.shields.io/badge/1%-CSS-61CCD2)
+![badge](https://img.shields.io/badge/%1-JavaScript-FF700B)
+[shields.io](https://shields.io/).
