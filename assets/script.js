@@ -1,4 +1,3 @@
-//TODO add arrray to function to change with carousel
 var catPhotos = []
 fetch('https://api.thecatapi.com/v1/images/search?limit=10')//50&api_key=live_4MxtfIDUxCcvH5y3DoACnMZw1ijvUw7eiz48xvUqelwA97DSk7Cpv1JkE4H64q84')
 .then(function (response) {
@@ -47,7 +46,7 @@ $("#favorites-btn").on("click", function () {
   localStorage.setItem("favorites", JSON.stringify(favorites));
     });
 
-  //dummy variables would need the right id for container
+
   var catF = $("#random-fact");
 //-------------------------------------
   var catFacts = [];
