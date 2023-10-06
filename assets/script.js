@@ -3,10 +3,11 @@ var viewingFavorites = 0
 var changeCheck = 0
 var catFacts = [];
 var catPhotos = [];
-var randomObject = []
-var myFavorites = [];
-var currentArray = []
+var randomObject = [];
+var myFavorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
+var currentArray = [];
 var ready = 0
+
 
 function makeObject(){
   ready++
@@ -98,12 +99,10 @@ function next() {
   console.log('index'+index);
   console.log(currentArray)
   console.log('array index'+currentArray[index]);
-  display();
-  if (index > currentArray.length-1) {
+  if (index >= currentArray.length-1) {
     index = 0;
   } else { index++;}
-  //display();
-  return index;
+  display();
 };
 
 function previous() {
@@ -117,7 +116,6 @@ function previous() {
   }
   display();
   console.log("index: ", index);
-  return index;
 };
 
 $('#previous').on('click', previous);
@@ -173,12 +171,11 @@ var viewFav = $("#view-favorites");
 $(viewFav).on("click", function () {
 
   // Retrieve myFavorites from localStorage
-  var favorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
-  console.log("My Favorites:", favorites);
+  console.log("My Favorites:", myFavorites);
 
   if(viewingFavorites === 0){viewingFavorites++}
   else{viewingFavorites--}
-  changeCheck++
+  changeCheck++;
 
   console.log(viewFav.text());
 
