@@ -8,7 +8,6 @@ var myFavorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
 var currentArray = [];
 var ready = 0
 
-
 function makeObject(){
   ready++
   if(ready === 2){
@@ -140,6 +139,10 @@ function addOrRemoveFav() {
   };
 
 // 
+  //Modal
+  var modal = $(".modal");
+  var modalBg = $(".modal-background");
+  var modalContent = $("#modalContent");
   var isFavorite = false;
   for (var i = 0; i < myFavorites.length; i++) {
     if (myFavorites[i].photo === currentPhoto && myFavorites[i].fact === currentFact) {
@@ -147,17 +150,26 @@ function addOrRemoveFav() {
       myFavorites.splice(i, 1);
       //call alerts function here in place of alert for modal
       //alert("removed from favorites");
-      Alerts();
+      modal.addClass("is-active");
+      modalContent.text("Removed from favorites 💔");
+      $(".modal-background").on("click", function () {
+        modal.removeClass("is-active");
+      });
       isFavorite = true;
       break;
     }
   }
-
+  //has-background-primary
+  // <h3 class="title mb-6" id = "modalContent"></h3>
   // If it's not in myFavorites, add it
   if (!isFavorite) {
     myFavorites.push(favoritePair);
       //call alerts function here in place of alert for modal
-      Alerts();
+      modal.addClass("is-active");
+      modalContent.text("Added to favorites! 💕");
+      $(".modal-background").on("click", function () {
+        modal.removeClass("is-active");
+      });
     //  alert("added to favorites!")
   }
 
@@ -191,20 +203,3 @@ $(viewFav).on("click", function () {
     currentArray = myFavorites
   }
 })
-
-//Modal
-var heartBtn = $("#favorite");
-var modal = $(".modal");
-var modalBg = $(".modal-background");
-var modalContent = $("#modalContent");
-
-
-  //add class "is-active" to modal for pop up
-  function Alerts () {
-    if (isFavorite === true) {
-      modalContent.text("Added to favorites!");
-    }
-    else {
-      modalContent.text("Removed from favorites");
-    }
-  };
