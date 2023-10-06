@@ -124,5 +124,16 @@ $("#view-favorites").on("click", function () {
   // Retrieve myFavorites from localStorage
   var favorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
   console.log("My Favorites:", favorites);
+
+  var viewFav = $("#view-favorites");
+
+  console.log(viewFav.text());
+  
+  if (viewFav.text() === "View Favorites"){
+    viewFav.text("back to random");
+  } else {
+    viewFav.text("View Favorites");
+  };
+
 });
 
