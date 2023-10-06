@@ -145,7 +145,9 @@ function addOrRemoveFav() {
     if (myFavorites[i].photo === currentPhoto && myFavorites[i].fact === currentFact) {
       // If it's already in myFavorites, remove it
       myFavorites.splice(i, 1);
-      alert("removed from favorites")
+      //call alerts function here in place of alert for modal
+      //alert("removed from favorites");
+      Alerts();
       isFavorite = true;
       break;
     }
@@ -154,7 +156,9 @@ function addOrRemoveFav() {
   // If it's not in myFavorites, add it
   if (!isFavorite) {
     myFavorites.push(favoritePair);
-    alert("added to favorites!")
+      //call alerts function here in place of alert for modal
+      Alerts();
+    //  alert("added to favorites!")
   }
 
   // Store myFavorites in localStorage
@@ -187,3 +191,20 @@ $(viewFav).on("click", function () {
     currentArray = myFavorites
   }
 })
+
+//Modal
+var heartBtn = $("#favorite");
+var modal = $(".modal");
+var modalBg = $(".modal-background");
+var modalContent = $("#modalContent");
+
+
+  //add class "is-active" to modal for pop up
+  function Alerts () {
+    if (isFavorite === true) {
+      modalContent.text("Added to favorites!");
+    }
+    else {
+      modalContent.text("Removed from favorites");
+    }
+  };
