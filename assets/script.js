@@ -21,6 +21,7 @@ function makeObject(){
   }
 console.log(randomObject);
 currentArray = randomObject;
+console.log(currentArray);
   }else{console.log("nope")
 return;}
 }
@@ -75,6 +76,7 @@ var image = $('#random-img');
 
 
 function display(){
+  console.log(index)
   console.log(currentArray[index].photo);
   console.log(currentArray[index].fact);
   image.attr('src', currentArray[index].photo);
@@ -96,10 +98,11 @@ function next() {
   console.log('index'+index);
   console.log(currentArray)
   console.log('array index'+currentArray[index]);
+  display();
   if (index > currentArray.length-1) {
     index = 0;
   } else { index++;}
-  display();
+  //display();
   return index;
 };
 
@@ -108,7 +111,7 @@ function previous() {
   console.log(index);
   console.log(currentArray[index]);
   if (index <= 0){
-    index = currentArray.length; 
+    index = currentArray.length-1; 
   } else {
     index--;
   }
