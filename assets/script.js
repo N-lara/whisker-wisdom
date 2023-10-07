@@ -1,6 +1,5 @@
 // calls both api's and creates array for photos and facts
 var viewingFavorites = 0;
-var changeCheck = 0;
 var catFacts = [];
 var catPhotos = [];
 var randomObject = [];
@@ -9,7 +8,7 @@ var currentArray = [];
 var ready = 0;
 
 function makeObject(){
-  ready++
+  ready++;
   if(ready === 2){
     for(var i = 0; i < catPhotos.length; i++){
       console.log(i);
@@ -22,11 +21,11 @@ function makeObject(){
 console.log(randomObject);
 currentArray = randomObject;
 console.log(currentArray);
-  }else{console.log("nope")
+  }else{console.log("1 of 2 loaded")
 return;}
 }
 
-var catFactsUrl = "https://meowfacts.herokuapp.com/?count=10";
+var catFactsUrl = "https://meowfacts.herokuapp.com/?count=50";
 
 fetch(catFactsUrl, {
   method: "GET",
@@ -39,13 +38,12 @@ fetch(catFactsUrl, {
   return response.json();
 }).then(function (data) {
   for (i = 0; i < data.data.length; i++) {
-    // console.log(data.data);
     catFacts.unshift(data.data[i]);
   }
   makeObject();
 });
 
-var catPhotosUrl = 'https://api.thecatapi.com/v1/images/search?limit=10'//50&api_key=live_4MxtfIDUxCcvH5y3DoACnMZw1ijvUw7eiz48xvUqelwA97DSk7Cpv1JkE4H64q84')
+var catPhotosUrl = 'https://api.thecatapi.com/v1/images/search?limit=50&api_key=live_4MxtfIDUxCcvH5y3DoACnMZw1ijvUw7eiz48xvUqelwA97DSk7Cpv1JkE4H64q84'
 
 fetch(catPhotosUrl)
   .then(function (response) {
@@ -74,25 +72,17 @@ var image = $('#random-img');
 
 
 function display(){
-  console.log(index)
+  console.log('display index:' + index)
   console.log(currentArray[index].photo);
   console.log(currentArray[index].fact);
   image.attr('src', currentArray[index].photo);
   catF.text(currentArray[index].fact);
 }
 
-function changeChecker(){
-  console.log(changeCheck)
 
-  if(changeCheck === 1){
-    index = 0; 
-    changeCheck--;
-  }
-}
 
 
 function next() {
-  changeChecker();
   console.log('index'+index);
   console.log(currentArray);
   console.log('array index'+currentArray[index]);
@@ -103,7 +93,6 @@ function next() {
 };
 
 function previous() {
-  changeChecker();
   console.log(index);
   console.log(currentArray[index]);
   if (index <= 0){
@@ -125,8 +114,8 @@ $("#next").on("click", next);
 $("#favorite").on("click", addOrRemoveFav);
 
 function addOrRemoveFav() {
-  var currentPhoto = catPhotos[index];
-  var currentFact = catFacts[index];
+  var currentPhoto = currentArray[index].photo;
+  var currentFact = currentArray[index].fact;
   console.log("fav photo: ", currentPhoto);
   console.log("fav fact: ", currentFact);
 
@@ -146,6 +135,10 @@ function addOrRemoveFav() {
     if (myFavorites[i].photo === currentPhoto && myFavorites[i].fact === currentFact) {
       // If it's already in myFavorites, remove it
       myFavorites.splice(i, 1);
+      if(viewingFavorites === 1){
+        currentArray = myFavorites;
+        display();
+      }
       // ALERT MODAL
       modal.addClass("is-active");
       modalContent.text("Removed from favorites 💔");
@@ -154,7 +147,7 @@ function addOrRemoveFav() {
       });
       isFavorite = true;
       break;
-    }
+    }else{isFavorite = false;}
   }
  
   // If it's not in myFavorites, add it
@@ -182,17 +175,21 @@ $(viewFav).on("click", function () {
   // Retrieve myFavorites from localStorage
   console.log("My Favorites:", myFavorites);
 
-  if(viewingFavorites === 0){viewingFavorites++}
-  else{viewingFavorites--}
-  changeCheck++;
+  if(viewingFavorites === 0){
+    viewingFavorites++;
+  }else{
+    viewingFavorites--;
+  }
 
   console.log(viewFav.text());
 
   if (currentArray === myFavorites) {
-    viewFav.text("back to random");
+    viewFav.text("View Favorites");
     currentArray = randomObject;
   } else if (currentArray === randomObject) {
-    viewFav.text("View Favorites")
+    viewFav.text("back to random")
     currentArray = myFavorites;
   }
+  index = 0;
+  display();
 })
