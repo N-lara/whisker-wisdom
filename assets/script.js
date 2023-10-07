@@ -1,16 +1,16 @@
 // calls both api's and creates array for photos and facts
-var viewingFavorites = 0
-var changeCheck = 0
+var viewingFavorites = 0;
+var changeCheck = 0;
 var catFacts = [];
 var catPhotos = [];
 var randomObject = [];
 var myFavorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
 var currentArray = [];
-var ready = 0
+var ready = 0;
 
 
 function makeObject(){
-  ready++
+  ready++;
   if(ready === 2){
     for(var i = 0; i < catPhotos.length; i++){
       console.log(i);
@@ -27,7 +27,7 @@ console.log(currentArray);
 return;}
 }
 
-var catFactsUrl = "https://meowfacts.herokuapp.com/?count=10";
+var catFactsUrl = "https://meowfacts.herokuapp.com/?count=50";
 
 fetch(catFactsUrl, {
   method: "GET",
@@ -40,14 +40,12 @@ fetch(catFactsUrl, {
   return response.json();
 }).then(function (data) {
   for (i = 0; i < data.data.length; i++) {
-    // console.log(data.data);
     catFacts.unshift(data.data[i]);
-    // catF.text(catFacts);
   }
-  makeObject()
+  makeObject();
 });
 
-var catPhotosUrl = 'https://api.thecatapi.com/v1/images/search?limit=10'//50&api_key=live_4MxtfIDUxCcvH5y3DoACnMZw1ijvUw7eiz48xvUqelwA97DSk7Cpv1JkE4H64q84')
+var catPhotosUrl = 'https://api.thecatapi.com/v1/images/search?limit=50&api_key=live_4MxtfIDUxCcvH5y3DoACnMZw1ijvUw7eiz48xvUqelwA97DSk7Cpv1JkE4H64q84'
 
 fetch(catPhotosUrl)
   .then(function (response) {
@@ -55,9 +53,8 @@ fetch(catPhotosUrl)
       response.json().then(function (data) {
         for (var i = 0; i < data.length; i++) {
           catPhotos.unshift(data[i].url);
-          // console.log(catPhotos);
         }
-        makeObject()
+        makeObject();
       });
     }
   });
