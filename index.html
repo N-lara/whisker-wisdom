@@ -11,24 +11,76 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+    
+    <!--Header with View Favorites button-->
     <header class="container has-background-pink has-text-centered py-3 box container-fluid">
         <h1 class="title has-text-centered">Whisker Wisdom</h1>
         <button class="button is-success" id = "view-favorites">View Favorites</button>
     </header>
     
+    <!--Content and button interactions-->
     <main class="columns is-centered is-vcentered">
         <div class="column is-one-third has-text-centered">
             <button id="previous" class="button is-success">Prev</button>
         </div>
+        
         <div class="column is-one-third has-text-centered" id="content-container">
-            <img id="random-img" src="" alt="">
-            <p id="random-fact" class="content"></p>
-            <button id = "favorite">heart</button>
+            <img id="random-img" src="./assets/images/tom-and-jerry-4k-42.jpg" alt="">
+            <p id= "random-fact" class = "content has-text-weight-semibold">Welcome to Whisker Wisdom, where you'll get your dose of cute cat pictures alongside facts about cats.</p>
+            <button id = "favorite"><i class="fa-solid fa-heart"></i></button>
         </div>
+        
         <div class="column is-one-third has-text-centered">
             <button id="next" class="button is-success">Next</button>
         </div>
     </main>
+    
+    <!--Modal-->
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content has-background-primary-dark py-5 px-5">
+            <p class="class mb-2" id = "modalContent"></p>
+        </div>
+    </div>
+   
+    <!--About Us-->
+    <div class="about-us">
+        <div class="about-us-content">
+            <h2 class = "has-text-weight-bold has-text-danger-light ">About Us</h2>
+            <p class = "has-text-weight-semibold">WE ARE CAT LOVERS, BUM BA DUM BUM BUM BUM BUM!!</p>
+        </div>
+    </div>
+    
+    <!--Footer-->
+    <footer class="card-footer">
+        <p class="card-footer-item">
+            <span>
+                View the Repo & Collaborators here:   
+            </span>
+        </p>
+        <p class="card-footer-item">
+            <span>
+                <a href="https://github.com/N-lara/adopt-a-pet"><i class="fa-brands fa-github">Whisker Wisdom</i>  
+            </span>
+        </p>
+        <p class="card-footer-item">
+            <span>
+                <a href="https://github.com/N-lara"><i class="fa-brands fa-github">Noah</i>
+            </span>
+        </p>
+        <p class="card-footer-item">
+            <span>
+                <a href="https://github.com/TatumSterling"><i class="fa-brands fa-github">Tatum</i>
+            </span>
+        </p>
+        <p class="card-footer-item">
+            <span>
+                <a href="https://github.com/Arthur-Bridges"><i class="fa-brands fa-github">Arthur</i>
+            </span>
+        </p>
+    </footer>
+    
+    <!--Scripts-->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="./assets/script.js"></script>
 </body>
