@@ -138,17 +138,17 @@ function addOrRemoveFav() {
       console.log('viewingfavorites:' +viewingFavorites)
       if(viewingFavorites === 1){
         console.log(currentArray.length)
-        // if(currentArray.length===0){
-        //   console.log('hello');
-        //   alert('no favorites left');
-        //   index = 0;
-        //   viewFav.text("View Favorites")
-        //   currentArray = randomObject;
-        //   display();
-        // }else{
+        if(currentArray.length===0){
+          console.log('hello');
+          alert('no favorites left');
+          index = 0;
+          viewFav.text("View Favorites")
+          currentArray = randomObject;
+          display();
+        }else{
         currentArray = myFavorites;
         display();
-        //}
+        }
       }
       // ALERT MODAL
       modal.addClass("is-active");
