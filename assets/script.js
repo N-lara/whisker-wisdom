@@ -152,7 +152,7 @@ function addOrRemoveFav() {
             display();
           }else{
           currentArray = myFavorites;
-          index--;
+          if(index != 0){index--;}
           display();
           }
           
