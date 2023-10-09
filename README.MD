@@ -12,7 +12,7 @@ N/A
 
 Usage for this web application is very simple. You can browse random cat facts and photos with the slideshow. If you like a photo/fact you may favorite it by clicking the favorite button. The favorites are saved to local storage so if you exit the page and come back your favorites will be saved. If you wish to change from looking at the random pictures to looking at your favorited photos, you may click the view favorites button. This will switch the slideshow from the random pictures and facts to a slideshow of your favorited pictures and facts. Once you are done viewing your favorites then you can click the view random button to switch the slideshow from your favorites back to the random feed. That just about covers the complete functionality of this program have a great time, and happy scrolling!
 
-![alt text](./assets/screenshot.png)
+![alt text](./assets/images/screenshot.png)
 
 ## Credits
 

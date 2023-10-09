@@ -135,9 +135,20 @@ function addOrRemoveFav() {
     if (myFavorites[i].photo === currentPhoto && myFavorites[i].fact === currentFact) {
       // If it's already in myFavorites, remove it
       myFavorites.splice(i, 1);
+      console.log('viewingfavorites:' +viewingFavorites)
       if(viewingFavorites === 1){
+        console.log(currentArray.length)
+        if(currentArray.length===0){
+          console.log('hello');
+          alert('no favorites left');
+          index = 0;
+          viewFav.text("View Favorites")
+          currentArray = randomObject;
+          display();
+        }else{
         currentArray = myFavorites;
         display();
+        }
       }
       // ALERT MODAL
       modal.addClass("is-active");
@@ -181,7 +192,7 @@ $(viewFav).on("click", function () {
     viewingFavorites--;
   }
 
-  console.log(viewFav.text());
+  console.log('button text' +viewFav.text());
 
   if (currentArray === myFavorites) {
     viewFav.text("View Favorites");
