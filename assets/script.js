@@ -139,35 +139,35 @@ function addOrRemoveFav() {
       myFavorites.splice(i, 1);
       console.log("testing");
       console.log("viewing favorites", viewingFavorites);
+      //modal to inform user the slide was unliked
+      modal.addClass("is-active");
+      modalContent.text("Removed from favorites 💔");
+      $(".modal-background").on("click", function () {
+        modal.removeClass("is-active");
+      });
+      isFavorite = true;
+
       if(viewingFavorites === 1){
         console.log("viewing favorites", viewingFavorites)
           console.log(currentArray.length)
           if(currentArray.length===0){
-
-
+            //modal to tell the user there is no more favorite slides left
+            modal.addClass("is-active");
+            modalContent.text("You have no more favorites... returning to random.");
+            $(".modal-background").on("click", function () {
+            modal.removeClass("is-active");
+            });
             viewFav.text("View Favorites");
             viewingFavorites--;
             index = 0;
             currentArray = randomObject;
-            display();
-          }else{
-          currentArray = myFavorites;
-          index--;
-          display();
-          }
-          
+            }else{
+            currentArray = myFavorites;
+            if(index !== 0){index--;}
+            }   
+           display(); 
       }
-        modal.addClass("is-active");
-        modalContent.text("Removed from favorites 💔");
-        $(".modal-background").on("click", function () {
-          modal.removeClass("is-active");
-        });
-        isFavorite = true;
         break;
-  
-
-      // ALERT MODAL
-
     }else{isFavorite = false;}
   }
  
@@ -202,7 +202,7 @@ $(viewFav).on("click", function () {
     viewingFavorites--;
   }
 
-  console.log(viewFav.text());
+  console.log('button text' +viewFav.text());
 
   if (currentArray === myFavorites) {
     viewFav.text("View Favorites");
@@ -210,23 +210,19 @@ $(viewFav).on("click", function () {
   } else if (currentArray === randomObject) {
       if (myFavorites.length===0){
         modal.addClass("is-active");
-        modalContent.text("you haven't added anything to favorites! 💔");
+        modalContent.text("you haven't added anything to favorites!");
         $(".modal-background").on("click", function() {
           modal.removeClass("is-active");
         });
         currentArray=randomObject;
         viewFav.text("View Favorites");
-        // index=0;
-        // display();
       } else {
         viewFav.text("back to random")
         currentArray = myFavorites;
       
       index = 0;
-      display();
       }
 
-
   }
-
+  display();
 });
