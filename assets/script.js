@@ -1,4 +1,4 @@
-// calls both api's and creates array for photos and facts
+// global scope variables to be used throughout code--------------------
 var viewingFavorites = 0;
 var catFacts = [];
 var catPhotos = [];
@@ -6,24 +6,11 @@ var randomObject = [];
 var myFavorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
 var currentArray = [];
 var ready = 0;
+var index = 0; 
+var catF = $("#random-fact");
+var image = $('#random-img');
 
-function makeObject(){
-  ready++;
-  if(ready === 2){
-    for(var i = 0; i < catPhotos.length; i++){
-      console.log(i);
-      random = {
-        photo: catPhotos[i],
-        fact: catFacts[i]
-      }
-    randomObject.push(random);
-  }
-console.log(randomObject);
-currentArray = randomObject;
-console.log(currentArray);
-  }else{console.log("1 of 2 loaded")
-return;}
-}
+// fetching both api for and pushing object pair into an array-----------
 
 var catFactsUrl = "https://meowfacts.herokuapp.com/?count=50";
 
@@ -60,27 +47,32 @@ fetch(catPhotosUrl)
 
   
   
-//------------------------------------------------------------------------
+//function that creates the array of both facts and photos------------------
 
-
-var index = 0; 
-var catF = $("#random-fact");
-var image = $('#random-img');
+function makeObject(){
+  ready++;
+  if(ready === 2){
+    for(var i = 0; i < catPhotos.length; i++){
+      // console.log(i);
+      random = {
+        photo: catPhotos[i],
+        fact: catFacts[i]
+      }
+    randomObject.push(random);
+  }
+console.log(randomObject);
+currentArray = randomObject;
+console.log(currentArray);
+  }else{console.log("1 of 2 loaded")
+return;}
+}
 
 
 // event listeners and logic for next/previous buttons-----------
 
+$('#previous').on('click', previous);
 
-function display(){
-  console.log('display index:' + index)
-  console.log(currentArray[index].photo);
-  console.log(currentArray[index].fact);
-  image.attr('src', currentArray[index].photo);
-  catF.text(currentArray[index].fact);
-}
-
-
-
+$("#next").on("click", next);
 
 function next() {
   console.log('index'+index);
@@ -104,14 +96,25 @@ function previous() {
   console.log("index: ", index);
 };
 
-$('#previous').on('click', previous);
 
-$("#next").on("click", next);
 
-//----------------------------------------------------------------
-// favorites feature 
+//function that displays fact and photo from current array-----------------------------
+
+function display(){
+  console.log('display index:' + index)
+  // console.log(currentArray[index].photo);
+  console.log(currentArray[index].fact);
+  image.attr('src', currentArray[index].photo);
+  catF.text(currentArray[index].fact);
+}
+
+
+// favorites button feature ---------------------------
 
 $("#favorite").on("click", addOrRemoveFav);
+
+var modal = $(".modal");
+var modalContent = $("#modalContent");
 
 function addOrRemoveFav() {
   var currentPhoto = currentArray[index].photo;
@@ -127,37 +130,44 @@ function addOrRemoveFav() {
 
  //Modal handles
 // $(".modal-background")
-  var modal = $(".modal");
-  var modalContent = $("#modalContent");
-  //
+
+//goes through array of favorites and checks to see if 
   var isFavorite = false;
   for (var i = 0; i < myFavorites.length; i++) {
     if (myFavorites[i].photo === currentPhoto && myFavorites[i].fact === currentFact) {
       // If it's already in myFavorites, remove it
       myFavorites.splice(i, 1);
-      console.log('viewingfavorites:' +viewingFavorites)
+      console.log("testing");
+      console.log("viewing favorites", viewingFavorites);
       if(viewingFavorites === 1){
-        console.log(currentArray.length)
-        if(currentArray.length===0){
-          console.log('hello');
-          alert('no favorites left');
-          index = 0;
-          viewFav.text("View Favorites")
-          currentArray = randomObject;
+        console.log("viewing favorites", viewingFavorites)
+          console.log(currentArray.length)
+          if(currentArray.length===0){
+
+
+            viewFav.text("View Favorites");
+            viewingFavorites--;
+            index = 0;
+            currentArray = randomObject;
+            display();
+          }else{
+          currentArray = myFavorites;
+          index--;
           display();
-        }else{
-        currentArray = myFavorites;
-        display();
-        }
+          }
+          
       }
+        modal.addClass("is-active");
+        modalContent.text("Removed from favorites 💔");
+        $(".modal-background").on("click", function () {
+          modal.removeClass("is-active");
+        });
+        isFavorite = true;
+        break;
+  
+
       // ALERT MODAL
-      modal.addClass("is-active");
-      modalContent.text("Removed from favorites 💔");
-      $(".modal-background").on("click", function () {
-        modal.removeClass("is-active");
-      });
-      isFavorite = true;
-      break;
+
     }else{isFavorite = false;}
   }
  
@@ -198,9 +208,25 @@ $(viewFav).on("click", function () {
     viewFav.text("View Favorites");
     currentArray = randomObject;
   } else if (currentArray === randomObject) {
-    viewFav.text("back to random")
-    currentArray = myFavorites;
+      if (myFavorites.length===0){
+        modal.addClass("is-active");
+        modalContent.text("you haven't added anything to favorites! 💔");
+        $(".modal-background").on("click", function() {
+          modal.removeClass("is-active");
+        });
+        currentArray=randomObject;
+        viewFav.text("View Favorites");
+        // index=0;
+        // display();
+      } else {
+        viewFav.text("back to random")
+        currentArray = myFavorites;
+      
+      index = 0;
+      display();
+      }
+
+
   }
-  index = 0;
-  display();
-})
+
+});
