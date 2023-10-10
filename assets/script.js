@@ -117,8 +117,8 @@ var modal = $(".modal");
 var modalContent = $("#modalContent");
 
 function addOrRemoveFav() {
-  var currentPhoto = currentArray[index].photo;
-  var currentFact = currentArray[index].fact;
+  var currentPhoto = currentArray[index].photo; // grabs current photo to use in local storage
+  var currentFact = currentArray[index].fact;// grabs current fact to use in local storage
   console.log("fav photo: ", currentPhoto);
   console.log("fav fact: ", currentFact);
 
@@ -132,11 +132,11 @@ function addOrRemoveFav() {
 // $(".modal-background")
 
 //goes through array of favorites and checks to see if 
-  var isFavorite = false;
+  var isFavorite = false; // false meaning the pair was not in local storage
   for (var i = 0; i < myFavorites.length; i++) {
     if (myFavorites[i].photo === currentPhoto && myFavorites[i].fact === currentFact) {
       // If it's already in myFavorites, remove it
-      myFavorites.splice(i, 1);
+      myFavorites.splice(i, 1); // removes one index from favorites array at index i
       console.log("testing");
       console.log("viewing favorites", viewingFavorites);
       //modal to inform user the slide was unliked
@@ -145,22 +145,22 @@ function addOrRemoveFav() {
       $(".modal-background").on("click", function () {
         modal.removeClass("is-active");
       });
-      isFavorite = true;
+      isFavorite = true; // true meaning the pair was in local storage so it was removed
 
       if(viewingFavorites === 1){
         console.log("viewing favorites", viewingFavorites)
           console.log(currentArray.length)
-          if(currentArray.length===0){
+          if(currentArray.length===0){ 
             //modal to tell the user there is no more favorite slides left
             modal.addClass("is-active");
             modalContent.text("You have no more favorites... returning to random.");
             $(".modal-background").on("click", function () {
             modal.removeClass("is-active");
             });
-            viewFav.text("View Favorites");
+            viewFav.text("View Favorites"); // changes favorites button text 
             viewingFavorites--;
             index = 0;
-            currentArray = randomObject;
+            currentArray = randomObject; //sets array back to randomObject
             }else{
             currentArray = myFavorites;
             if(index !== 0){index--;}
@@ -173,7 +173,7 @@ function addOrRemoveFav() {
  
   // If it's not in myFavorites, add it
   if (!isFavorite) {
-    myFavorites.push(favoritePair);
+    myFavorites.push(favoritePair); // adds current pair into local storage in myFavorites array
        // ALERT MODAL
       modal.addClass("is-active");
       modalContent.text("Added to favorites! 💕");
@@ -196,7 +196,7 @@ $(viewFav).on("click", function () {
   // Retrieve myFavorites from localStorage
   console.log("My Favorites:", myFavorites);
 
-  if(viewingFavorites === 0){
+  if(viewingFavorites === 0){ // checks to see if we are viewing favorites array
     viewingFavorites++;
   }else{
     viewingFavorites--;
@@ -204,21 +204,21 @@ $(viewFav).on("click", function () {
 
   console.log('button text' +viewFav.text());
 
-  if (currentArray === myFavorites) {
-    viewFav.text("View Favorites");
-    currentArray = randomObject;
+  if (currentArray === myFavorites) {  
+    viewFav.text("View Favorites"); // sets button text to view favorites if current array is changing to randomObject
+    currentArray = randomObject;// switches array to randomObject
   } else if (currentArray === randomObject) {
-      if (myFavorites.length===0){
+      if (myFavorites.length===0){ 
         modal.addClass("is-active");
-        modalContent.text("you haven't added anything to favorites!");
+        modalContent.text("you haven't added anything to favorites!"); // alerts user that they cannot view favorites if nothing is saved
         $(".modal-background").on("click", function() {
           modal.removeClass("is-active");
         });
-        currentArray=randomObject;
-        viewFav.text("View Favorites");
+        currentArray=randomObject; // keeps array at randomObject
+        viewFav.text("View Favorites"); // keeps button the same text 
       } else {
-        viewFav.text("back to random")
-        currentArray = myFavorites;
+        viewFav.text("back to random") // sets button text to back to random if current array is randomObject
+        currentArray = myFavorites; // switches array to myFavorites
       
       index = 0;
       }
